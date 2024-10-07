@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">TP1PatronObs</string>
+    <string name="hint_username">Username</string>
+    <string name="text_btn_sing_in">Login</string>
+    <string name="text_tv_checkbox">Mantener sesión iniciada</string>
+    <string name="text_btn_sing_up">Sign Up</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="text_btn_cancel">Cancel</string>
+    <string name="txt_inicio">Inicio</string>
+    <string name="txt_mis_libros">Mis libros</string>
+    <string name="txt_settings">Configuración</string>
+    <string name="nav_drawer_home_open">Open</string>
+    <string name="nav_drawer_home_close">Close</string>
+    <string name="txt_busqueda">Search</string>
+    <string name="txt_sign_out">Sign out</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="added_status">Added</string>
+    <string name="book_cover">Book Cover</string>
+</resources>

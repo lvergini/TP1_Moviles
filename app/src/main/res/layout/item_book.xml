@@ -1,0 +1,54 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp">
+
+    <!-- ImageView para la tapa del libro -->
+    <ImageView
+        android:id="@+id/ivBookCover"
+        android:layout_width="80dp"
+        android:layout_height="120dp"
+        android:contentDescription="@string/book_cover"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:scaleType="centerCrop" />
+
+    <!-- Título del libro -->
+    <TextView
+        android:id="@+id/tvBookTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        app:layout_constraintStart_toEndOf="@id/ivBookCover"
+        app:layout_constraintTop_toTopOf="@id/ivBookCover"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingStart="8dp"/>
+
+    <!-- Autor del libro -->
+    <TextView
+        android:id="@+id/tvBookAuthor"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textSize="14sp"
+        android:textColor="@android:color/darker_gray"
+        app:layout_constraintStart_toEndOf="@id/ivBookCover"
+        app:layout_constraintTop_toBottomOf="@id/tvBookTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:paddingStart="8dp"/>
+
+    <!-- Indicador de si está agregado -->
+    <ImageView
+        android:id="@+id/ivAddedStatus"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:contentDescription="@string/added_status"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/tvBookAuthor"
+        app:layout_constraintBottom_toBottomOf="@id/tvBookAuthor"
+        android:src="@drawable/ic_check" /> <!-- Ícono de check si ya está agregado -->
+
+</androidx.constraintlayout.widget.ConstraintLayout>
