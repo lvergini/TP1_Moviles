@@ -1,13 +1,13 @@
 <resources>
     <string name="app_name">TP1PatronObs</string>
     <string name="hint_username">Username</string>
-    <string name="text_btn_sign_in">Login</string>
-    <string name="text_tv_checkbox">Mantener sesión iniciada</string>
-    <string name="text_btn_sign_up">Sign Up</string>
+    <string name="btn_sign_in_text">Login</string>
+    <string name="remember_me_text">Mantener sesión iniciada</string>
+    <string name="btn_sign_up_text">Sign Up</string>
     <string name="hint_email">Email</string>
     <string name="hint_password">Password</string>
     <string name="hint_confirm_password">Confirm Password</string>
-    <string name="text_btn_cancel">Cancel</string>
+    <string name="btn_cancel_text">Cancel</string>
     <string name="txt_inicio">Inicio</string>
     <string name="txt_mis_libros">Mis libros</string>
     <string name="txt_settings">Configuración</string>
@@ -20,4 +20,5 @@
     <string name="added_status">Added</string>
     <string name="book_cover">Book Cover</string>
     <string name="txt_app_name">ReadIt</string>
+    <string name="error_invalid_credentials">Usuario o contraseña incorrectos</string>
 </resources>

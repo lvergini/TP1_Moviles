@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.lifecycle.Observer
+import com.definit.tp1patronobs.R
 import com.definit.tp1patronobs.models.User
 import com.definit.tp1patronobs.databinding.ActivityMainBinding
 import com.google.gson.Gson
@@ -62,13 +63,14 @@ class MainActivity : AppCompatActivity() {
         binding.btnSignIn.setOnClickListener {
 
             if (viewModel.validateUserCredentials()) {
-                val matchingUser = getUsersList().find { it.username == binding.etUsername.text.toString() }
-                if (matchingUser != null && binding.checkbox.isChecked) {
+                val matchingUser = usersList.find { it.username == binding.etUsername.text.toString() }
+                if (matchingUser != null && binding.checkboxRememberMe.isChecked) {
                     saveCurrentUser(matchingUser)
                 }
                 goToHomeActivity(matchingUser) // Pasar el objeto User a HomeActivity
             } else {
-                Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,
+                    getString(R.string.error_invalid_credentials), Toast.LENGTH_SHORT).show()
             }
 
         }
@@ -87,7 +89,6 @@ class MainActivity : AppCompatActivity() {
             emptyList()
         }
     }
-
 
     private fun goToHomeActivity(user: User?) {
         val intent = Intent(this, com.definit.tp1patronobs.home.HomeActivity::class.java)

@@ -14,16 +14,19 @@ class RegisterViewModel:ViewModel() {
 
     fun validateUsername(username: String, usersList: List<User>) {
         this.username = username
+
         if (username.isNotBlank()) {
             if (usersList.any { it.username == username }) {
                 viewState.value = RegisterStates.ErrorUsernameTaken
             } else {
                 viewState.value = RegisterStates.SuccessUsername
+
             }
         } else {
             viewState.value = RegisterStates.ErrorUsernameBlank
         }
         validateForm()
+
     }
 
     fun validateEmail(email: String) {

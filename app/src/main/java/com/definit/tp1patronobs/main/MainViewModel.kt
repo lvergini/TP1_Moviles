@@ -38,6 +38,4 @@ class MainViewModel: ViewModel() {
         return matchingUser != null && matchingUser.password == password
     }
 
-
-
 }
