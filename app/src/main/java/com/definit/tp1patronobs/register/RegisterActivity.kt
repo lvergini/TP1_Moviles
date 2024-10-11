@@ -64,7 +64,7 @@ class RegisterActivity : AppCompatActivity() {
             viewModel.validateEmail(email.toString())
         }
         binding.etPassword.addTextChangedListener { password ->
-            viewModel.validatePassword(password.toString())
+            viewModel.validatePassword(password.toString(), this)
         }
         binding.etConfirmPassword.addTextChangedListener { confirmPassword ->
             viewModel.validateConfirmPassword(confirmPassword.toString())

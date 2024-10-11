@@ -1,8 +1,10 @@
 package com.definit.tp1patronobs.register
 
+import android.content.Context
 import androidx.core.util.PatternsCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.definit.tp1patronobs.R
 import com.definit.tp1patronobs.models.User
 
 class RegisterViewModel:ViewModel() {
@@ -48,25 +50,25 @@ class RegisterViewModel:ViewModel() {
         validateForm()
     }
 
-    fun validatePassword(password: String) {
+    fun validatePassword(password: String, context: Context) {
         this.password = password
         val errors = mutableListOf<String>()
 
         if (password.length < 8) {
-            errors.add("8 caracteres")
+            errors.add(context.getString(R.string.error_password_length))
         }
         if (!password.any { it.isLetter() }) {
-            errors.add("una letra")
+            errors.add(context.getString(R.string.error_password_letter))
         }
         if (!password.any { it.isDigit() }) {
-            errors.add("un número")
+            errors.add(context.getString(R.string.error_password_number))
         }
         if (errors.isEmpty()) {
             viewState.value = RegisterStates.SuccessPassword
             isPasswordValid = true
 
         } else {
-            val message = "Mínimo: ${errors.joinToString(", ")}"
+            val message = context.getString(R.string.error_password) + errors.joinToString(", ")
             viewState.value = RegisterStates.ErrorPassword(message)
             isPasswordValid = false
         }
