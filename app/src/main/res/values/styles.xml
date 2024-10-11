@@ -7,6 +7,9 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
-
+    <style name="ShapeAppearance.CircleImage" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
 
 </resources>

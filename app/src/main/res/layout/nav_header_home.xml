@@ -8,19 +8,24 @@
     android:background="@color/blue"
     android:focusable="true">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/ivNavHeader"
         android:layout_width="126dp"
         android:layout_height="126dp"
         android:src="@drawable/girondo"
         android:layout_margin="16dp"
+
+        app:shapeAppearance="@style/ShapeAppearance.CircleImage"
+        android:scaleType="centerCrop"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent" />
+
 
     <TextView
         android:id="@+id/tvNavHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
 
         android:textColor="@color/white"
         android:textSize="22sp"

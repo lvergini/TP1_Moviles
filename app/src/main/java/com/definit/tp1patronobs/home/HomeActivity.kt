@@ -58,6 +58,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val toolbar = binding.toolbar
         setSupportActionBar(toolbar)
 
+
         drawerLayout = binding.drawerLayout
 
 
@@ -69,6 +70,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_menu)
+        supportActionBar?.title = getString(R.string.txt_app_name)
 
         //implementación de interfaz para saber dónde hicimos click
         binding.navigationView.setNavigationItemSelectedListener(this)
