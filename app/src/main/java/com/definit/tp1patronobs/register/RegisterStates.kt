@@ -3,7 +3,12 @@ package com.definit.tp1patronobs.register
 
 sealed class RegisterStates {
     object ErrorEmail : RegisterStates()
-    data class ErrorPassword(val message: String): RegisterStates()
+    //data class ErrorPassword(val message: String): RegisterStates()
+    data class ErrorPassword(val errorTypes: List<PasswordError>) : RegisterStates() {
+        enum class PasswordError {
+            LENGTH, LETTER, NUMBER
+        }
+    }
     object ErrorConfirmPassword : RegisterStates()
     object ErrorUsernameTaken : RegisterStates()
     object ErrorUsernameBlank: RegisterStates()

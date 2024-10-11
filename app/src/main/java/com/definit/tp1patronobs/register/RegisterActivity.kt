@@ -64,7 +64,7 @@ class RegisterActivity : AppCompatActivity() {
             viewModel.validateEmail(email.toString())
         }
         binding.etPassword.addTextChangedListener { password ->
-            viewModel.validatePassword(password.toString(), this)
+            viewModel.validatePassword(password.toString(), this) // necesita el contexto para poder acceder a las strings
         }
         binding.etConfirmPassword.addTextChangedListener { confirmPassword ->
             viewModel.validateConfirmPassword(confirmPassword.toString())
@@ -74,30 +74,37 @@ class RegisterActivity : AppCompatActivity() {
         viewModel.viewState.observe(this) {state->
             when(state) {
                 is RegisterStates.ErrorEmail -> {
-                    binding.layoutEmail.error = "Correo inválido"
+                    binding.layoutEmail.error = getString(R.string.error_email_invalid)
                 }
                 is RegisterStates.SuccessEmail -> {
                     binding.layoutEmail.error = null
                 }
                 is RegisterStates.ErrorPassword -> {
-                    binding.layoutPassword.error = state.message
+                    //binding.layoutPassword.error = state.message
+                    val errorMessages = state.errorTypes.map { errorType ->
+                        when (errorType) {
+                            RegisterStates.ErrorPassword.PasswordError.LENGTH -> getString(R.string.error_password_length)
+                            RegisterStates.ErrorPassword.PasswordError.LETTER -> getString(R.string.error_password_letter)
+                            RegisterStates.ErrorPassword.PasswordError.NUMBER -> getString(R.string.error_password_number)
+                        }
+                    }
+                    binding.layoutPassword.error = getString(R.string.error_password) + errorMessages.joinToString(", ")
+
                 }
                 is RegisterStates.SuccessPassword -> {
                     binding.layoutPassword.error = null
                 }
                 is RegisterStates.ErrorConfirmPassword -> {
-                    binding.layoutConfirmPassword.error = "Las contraseñas no coinciden"
+                    binding.layoutConfirmPassword.error = getString(R.string.error_confirm_password)
                 }
                 is RegisterStates.SuccessConfirmPassword -> {
                     binding.layoutConfirmPassword.error = null
                 }
                 is RegisterStates.ErrorUsernameTaken -> {
-                    binding.layoutUsername.error = "El nombre de usuario ya está registrado"
-                    //Toast.makeText(this, "El nombre de usuario ya está registrado", Toast.LENGTH_SHORT).show()
+                    binding.layoutUsername.error = getString(R.string.error_username_taken)
                 }
                 RegisterStates.ErrorUsernameBlank -> {
-                    binding.layoutUsername.error = "Campo obligatorio"
-                    //Toast.makeText(this, "El nombre de usuario ya está registrado", Toast.LENGTH_SHORT).show()
+                    binding.layoutUsername.error = getString(R.string.error_username_blank)
                 }
                 is RegisterStates.SuccessUsername -> {
                     binding.layoutUsername.error = null
