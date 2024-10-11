@@ -28,14 +28,19 @@ class MainActivity : AppCompatActivity() {
         preferences = getSharedPreferences( com.definit.tp1patronobs.register.RegisterActivity.CREDENTIALS, MODE_PRIVATE)
         gson = Gson()
 
+        //Verificar si hay sesión activa
         val actualUserJson = preferences.getString("actualUser", null)
         if (actualUserJson != null) {
-            //Convertir JSON de actualUser en objeto User
-            val actualUser = gson.fromJson(actualUserJson, User::class.java)
+            val actualUser = gson.fromJson(actualUserJson, User::class.java) //Convertir JSON de actualUser en objeto User
             goToHomeActivity(actualUser) // Redirigir a HomeActivity si hay una sesión activa
             return
         }
 
+        // Cargar la lista de usuarios en el ViewModel
+        val usersList = getUsersList()
+        viewModel.setUsersList(usersList)
+
+        // Observadores de cambios en los campos
         binding.etUsername.addTextChangedListener { username ->
             viewModel.validateUsername(username = username.toString())
         }
@@ -51,32 +56,19 @@ class MainActivity : AppCompatActivity() {
                 MainStates.SuccessButton -> {
                     binding.btnSignIn.isEnabled = true
                 }
-                /*MainStates.ErrorUsername -> {
-                    binding.layoutUsername.error = "Correo inválido"
-                }
-                MainStates.ErrorPassword -> binding.layoutPassword.error = "Contraseña inválida"
-                MainStates.SuccessButton -> {
-                    binding.btnSingIn.isEnabled = true
-                }
-                MainStates.SuccessPassword -> {
-                    binding.layoutPassword.error = null
-                }
-                MainStates.SuccessUsername -> {
-                    binding.layoutUsername.error = null
-                }*/
-
             }
         })
 
         binding.btnSignIn.setOnClickListener {
-            val user = binding.etUsername.text.toString()
-            val password = binding.etPassword.text.toString()
-            if (validateData(user, password)) {
-                val matchingUser = getUsersList().find { it.username == user }
-                if (binding.checkbox.isChecked && matchingUser != null) {
+
+            if (viewModel.validateUserCredentials()) {
+                val matchingUser = getUsersList().find { it.username == binding.etUsername.text.toString() }
+                if (matchingUser != null && binding.checkbox.isChecked) {
                     saveCurrentUser(matchingUser)
                 }
                 goToHomeActivity(matchingUser) // Pasar el objeto User a HomeActivity
+            } else {
+                Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
             }
 
         }
@@ -95,20 +87,7 @@ class MainActivity : AppCompatActivity() {
             emptyList()
         }
     }
-    private fun validateData(user: String, password: String): Boolean {
-        val usersList = getUsersList()
 
-        //Buscar al usuario en la lista
-        val matchingUser = usersList.find { it.username == user }
-
-        // Validar si el usuario existe y la contraseña es correcta
-        if (matchingUser != null && matchingUser.password == password) {
-            return true
-        } else {
-            Toast.makeText(this, "Usuario o contraseña incorrectos", Toast.LENGTH_SHORT).show()
-            return false
-        }
-    }
 
     private fun goToHomeActivity(user: User?) {
         val intent = Intent(this, com.definit.tp1patronobs.home.HomeActivity::class.java)
