@@ -16,7 +16,10 @@
     <string name="txt_busqueda">Search</string>
     <string name="txt_sign_out">Sign out</string>
 
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="My_books_fragment">My books</string>
+    <string name="Search_fragment">Search</string>
+    <string name="Settings_fragment">Settings</string>
+
     <string name="added_status">Added</string>
     <string name="book_cover">Book Cover</string>
     <string name="txt_app_name">ReadIt</string>
@@ -29,7 +32,9 @@
     <string name="error_password_number">un número.</string>
     <string name="error_confirm_password">Las contraseñas no coinciden.</string>
     <string name="error_username_taken">El nombre de usuario ya está registrado.</string>
-    <string name="error_username_blank">El campo de nombre de usuario es obligatorio.</string>
+    <string name="error_username_blank">Campo obligatorio.</string>
     <string name="error_email_invalid">El correo electrónico no es válido.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

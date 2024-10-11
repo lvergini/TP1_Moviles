@@ -52,24 +52,29 @@ class RegisterViewModel:ViewModel() {
 
     fun validatePassword(password: String, context: Context) {
         this.password = password
-        val errors = mutableListOf<String>()
+        //val errors = mutableListOf<String>()
+        val errors = mutableListOf<RegisterStates.ErrorPassword.PasswordError>()
 
         if (password.length < 8) {
-            errors.add(context.getString(R.string.error_password_length))
+            //errors.add(context.getString(R.string.error_password_length))
+            errors.add(RegisterStates.ErrorPassword.PasswordError.LENGTH)
         }
         if (!password.any { it.isLetter() }) {
-            errors.add(context.getString(R.string.error_password_letter))
+            //errors.add(context.getString(R.string.error_password_letter))
+            errors.add(RegisterStates.ErrorPassword.PasswordError.LETTER)
         }
         if (!password.any { it.isDigit() }) {
-            errors.add(context.getString(R.string.error_password_number))
+            //errors.add(context.getString(R.string.error_password_number))
+            errors.add(RegisterStates.ErrorPassword.PasswordError.NUMBER)
         }
         if (errors.isEmpty()) {
             viewState.value = RegisterStates.SuccessPassword
             isPasswordValid = true
 
         } else {
-            val message = context.getString(R.string.error_password) + errors.joinToString(", ")
-            viewState.value = RegisterStates.ErrorPassword(message)
+            //val message = context.getString(R.string.error_password) + errors.joinToString(", ")
+            //viewState.value = RegisterStates.ErrorPassword(message)
+            viewState.value = RegisterStates.ErrorPassword(errors)
             isPasswordValid = false
         }
         validateConfirmPassword(confirmPassword)

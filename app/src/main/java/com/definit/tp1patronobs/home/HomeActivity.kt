@@ -11,11 +11,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.replace
 import androidx.lifecycle.Observer
 import com.definit.tp1patronobs.R
 import com.definit.tp1patronobs.models.User
 import com.definit.tp1patronobs.databinding.ActivityHomeBinding
+import com.definit.tp1patronobs.home.fragments.SettingsFragment
 import com.definit.tp1patronobs.home.fragments.HomeFragment
+import com.definit.tp1patronobs.home.fragments.MyBooksFragment
+import com.definit.tp1patronobs.home.fragments.SearchFragment
 import com.definit.tp1patronobs.main.MainActivity
 import com.definit.tp1patronobs.register.RegisterActivity
 import com.google.android.material.navigation.NavigationView
@@ -30,7 +34,6 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
 
         // Obtener el usuario pasado desde MainActivity
         val user = intent.getSerializableExtra("user") as? User
@@ -58,14 +61,11 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val toolbar = binding.toolbar
         setSupportActionBar(toolbar)
 
-
         drawerLayout = binding.drawerLayout
 
-
         //Para manejar interacción (cuándo abrir y cuándo cerrar)
-        val toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.nav_drawer_home_open, R.string.nav_drawer_home_close)
+         val toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.nav_drawer_home_open, R.string.nav_drawer_home_close)
         drawerLayout.addDrawerListener(toggle)
-
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeButtonEnabled(true)
@@ -86,14 +86,18 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when(item.itemId) {
             R.id.nav_home -> {
                 replaceFragment(HomeFragment())
-                //Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show()
+            }
+            R.id.nav_my_books -> {
+                replaceFragment(MyBooksFragment())
+                Toast.makeText(this,"My books",Toast.LENGTH_SHORT).show()
             }
             R.id.nav_search -> {
-                //replaceFragment(SearchFragment())
+                replaceFragment(SearchFragment())
                 Toast.makeText(this, "Search", Toast.LENGTH_SHORT).show()
             }
             R.id.nav_settings -> {
-                //replaceFragment(SettingsFragment())
+                replaceFragment(SettingsFragment())
                 Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show()
             }
             R.id.nav_logout -> {
