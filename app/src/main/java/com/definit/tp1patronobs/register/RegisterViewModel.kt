@@ -12,18 +12,25 @@ class RegisterViewModel:ViewModel() {
     private var password = ""
     private var confirmPassword = ""
 
+    private var isUsernameValid = false
+    private var isEmailValid = false
+    private var isPasswordValid = false
+    private var isConfirmPasswordValid = false
+
     fun validateUsername(username: String, usersList: List<User>) {
         this.username = username
 
         if (username.isNotBlank()) {
             if (usersList.any { it.username == username }) {
                 viewState.value = RegisterStates.ErrorUsernameTaken
+                isUsernameValid = false
             } else {
                 viewState.value = RegisterStates.SuccessUsername
-
+                isUsernameValid = true
             }
         } else {
             viewState.value = RegisterStates.ErrorUsernameBlank
+            isUsernameValid = false
         }
         validateForm()
 
@@ -33,9 +40,10 @@ class RegisterViewModel:ViewModel() {
         this.email = email
         if (PatternsCompat.EMAIL_ADDRESS.matcher(email).matches()) {
             viewState.value = RegisterStates.SuccessEmail
-
+            isEmailValid = true
         } else {
             viewState.value = RegisterStates.ErrorEmail
+            isEmailValid = false
         }
         validateForm()
     }
@@ -55,11 +63,14 @@ class RegisterViewModel:ViewModel() {
         }
         if (errors.isEmpty()) {
             viewState.value = RegisterStates.SuccessPassword
+            isPasswordValid = true
+
         } else {
             val message = "Mínimo: ${errors.joinToString(", ")}"
             viewState.value = RegisterStates.ErrorPassword(message)
+            isPasswordValid = false
         }
-
+        validateConfirmPassword(confirmPassword)
         validateForm()
     }
 
@@ -67,15 +78,17 @@ class RegisterViewModel:ViewModel() {
         this.confirmPassword = confirmPassword
         if (confirmPassword == password) {
             viewState.value = RegisterStates.SuccessConfirmPassword
+            isConfirmPasswordValid = true
         } else {
             viewState.value = RegisterStates.ErrorConfirmPassword
+            isConfirmPasswordValid = false
         }
         validateForm()
 
     }
 
     private fun validateForm() {
-        if (username.isNotBlank() && email.isNotBlank() && password == confirmPassword && password.length >= 8) {
+        if (isUsernameValid && isEmailValid && isPasswordValid && isConfirmPasswordValid) {
             viewState.value = RegisterStates.FormValid
         } else {
             viewState.value = RegisterStates.FormInvalid
