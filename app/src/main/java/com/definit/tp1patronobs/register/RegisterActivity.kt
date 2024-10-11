@@ -1,6 +1,6 @@
 package com.definit.tp1patronobs.register
 
-import android.R
+
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import com.definit.tp1patronobs.models.User  // Importar la clase User
 import com.definit.tp1patronobs.Genders
+import com.definit.tp1patronobs.R
 import com.definit.tp1patronobs.databinding.ActivityRegisterBinding
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
@@ -38,7 +39,7 @@ class RegisterActivity : AppCompatActivity() {
         val usersList = getUsersList() // Obtener la lista de usuarios desde SharedPreferences
 
         // Configuración del Spinner para el género
-        val adapter = ArrayAdapter(this, R.layout.simple_spinner_item, arrayGenders)
+        val adapter = ArrayAdapter(this, R.layout.spinner_item, arrayGenders)
         binding.spinnerGender.adapter = adapter
 
         binding.spinnerGender.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {

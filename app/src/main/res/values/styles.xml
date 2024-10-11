@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="SpinnerStyle" parent="Widget.AppCompat.Spinner.Underlined">
+        <item name="android:padding">12dp</item>
+        <item name="android:backgroundTint">@color/white</item>
+        <item name="android:spinnerMode">dropdown</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+
+
+</resources>

@@ -131,6 +131,7 @@
         android:layout_height="wrap_content"
         android:minHeight="48dp"
         android:layout_margin="12dp"
+        style="@style/SpinnerStyle"
         android:spinnerMode="dropdown"
         app:layout_constraintTop_toBottomOf="@+id/layoutConfirmPassword"
         app:layout_constraintLeft_toLeftOf="parent"
