@@ -46,10 +46,10 @@ class MainActivity : AppCompatActivity() {
         viewModel.mainViewState.observe(this, Observer { state->
             when(state) {
                 MainStates.ErrorButton -> {
-                    binding.btnSingIn.isEnabled = false
+                    binding.btnSignIn.isEnabled = false
                 }
                 MainStates.SuccessButton -> {
-                    binding.btnSingIn.isEnabled = true
+                    binding.btnSignIn.isEnabled = true
                 }
                 /*MainStates.ErrorUsername -> {
                     binding.layoutUsername.error = "Correo inválido"
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        binding.btnSingIn.setOnClickListener {
+        binding.btnSignIn.setOnClickListener {
             val user = binding.etUsername.text.toString()
             val password = binding.etPassword.text.toString()
             if (validateData(user, password)) {
@@ -80,7 +80,7 @@ class MainActivity : AppCompatActivity() {
             }
 
         }
-        binding.btnSingUp.setOnClickListener {
+        binding.btnSignUp.setOnClickListener {
             val intent = Intent(this, com.definit.tp1patronobs.register.RegisterActivity::class.java)
             startActivity(intent)
         }
