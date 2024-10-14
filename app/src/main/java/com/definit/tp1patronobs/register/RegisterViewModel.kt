@@ -50,7 +50,7 @@ class RegisterViewModel:ViewModel() {
         validateForm()
     }
 
-    fun validatePassword(password: String, context: Context) {
+    fun validatePassword(password: String) {
         this.password = password
         //val errors = mutableListOf<String>()
         val errors = mutableListOf<RegisterStates.ErrorPassword.PasswordError>()

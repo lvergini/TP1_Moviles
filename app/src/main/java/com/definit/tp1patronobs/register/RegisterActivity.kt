@@ -64,7 +64,7 @@ class RegisterActivity : AppCompatActivity() {
             viewModel.validateEmail(email.toString())
         }
         binding.etPassword.addTextChangedListener { password ->
-            viewModel.validatePassword(password.toString(), this) // necesita el contexto para poder acceder a las strings
+            viewModel.validatePassword(password.toString())
         }
         binding.etConfirmPassword.addTextChangedListener { confirmPassword ->
             viewModel.validateConfirmPassword(confirmPassword.toString())
@@ -118,7 +118,6 @@ class RegisterActivity : AppCompatActivity() {
 
             }
         }
-
 
         binding.btnSignUp.setOnClickListener {
             saveUserData()
