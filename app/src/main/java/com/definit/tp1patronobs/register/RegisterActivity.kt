@@ -15,6 +15,7 @@ import com.definit.tp1patronobs.models.User  // Importar la clase User
 import com.definit.tp1patronobs.Genders
 import com.definit.tp1patronobs.R
 import com.definit.tp1patronobs.databinding.ActivityRegisterBinding
+import com.definit.tp1patronobs.repository.UserRepository
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -23,6 +24,7 @@ class RegisterActivity : AppCompatActivity() {
     private val viewModel: RegisterViewModel by viewModels()
     private lateinit var preferences: SharedPreferences
     private lateinit var gson: Gson
+    private lateinit var userRepository: UserRepository
 
     val arrayGenders: Array<Genders> = Genders.values()
     var genderSelected: Genders? = null
@@ -35,8 +37,9 @@ class RegisterActivity : AppCompatActivity() {
         // Inicializar SharedPreferences y GSON
         preferences = getSharedPreferences(CREDENTIALS, MODE_PRIVATE)
         gson = Gson()
+        userRepository = UserRepository(preferences, gson)
 
-        val usersList = getUsersList() // Obtener la lista de usuarios desde SharedPreferences
+        val usersList = userRepository.getUsersList() // Obtener la lista de usuarios desde SharedPreferences
 
         // Configuración del Spinner para el género
         val adapter = ArrayAdapter(this, R.layout.spinner_item, arrayGenders)
@@ -80,7 +83,7 @@ class RegisterActivity : AppCompatActivity() {
                     binding.layoutEmail.error = null
                 }
                 is RegisterStates.ErrorPassword -> {
-                    //binding.layoutPassword.error = state.message
+
                     val errorMessages = state.errorTypes.map { errorType ->
                         when (errorType) {
                             RegisterStates.ErrorPassword.PasswordError.LENGTH -> getString(R.string.error_password_length)
@@ -133,17 +136,10 @@ class RegisterActivity : AppCompatActivity() {
         val password = binding.etPassword.text.toString()
         val gender = genderSelected?.toString() ?: "No seleccionado"
 
-        val newUser = User(username, email, password, gender) //gender
+        val newUser = User(username, email, password, gender)
 
-        // Obtener la lista de usuarios y agregar el nuevo usuario
-        val usersList = getUsersList().toMutableList()
-        usersList.add(newUser)
-
-        // Guardar la lista actualizada en SharedPreferences
-        val edit = preferences.edit()
-        val usersJson = gson.toJson(usersList)
-        edit.putString("users", usersJson)
-        edit.apply()
+        // Usar el repositorio para agregar el nuevo usuario
+        userRepository.addUser(newUser)
 
         Toast.makeText(this, "Usuario registrado con éxito", Toast.LENGTH_SHORT).show()
         goToMainActivity()
@@ -154,16 +150,6 @@ class RegisterActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun getUsersList(): List<User> {
-        val usersJson = preferences.getString("users", null)
-        return if (usersJson != null) {
-            val type = object : TypeToken<List<User>>() {}.type
-            gson.fromJson(usersJson, type)
-        } else {
-            emptyList()
-        }
-
-    }
 
     companion object {
         const val CREDENTIALS = "Credenciales"

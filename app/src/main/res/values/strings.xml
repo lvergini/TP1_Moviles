@@ -31,5 +31,6 @@
     <string name="error_username_taken">El nombre de usuario ya está registrado.</string>
     <string name="error_username_blank">Campo obligatorio.</string>
     <string name="error_email_invalid">El correo electrónico no es válido.</string>
+    <string name="logout_success">Sesión cerrada con éxito</string>
 
 </resources>

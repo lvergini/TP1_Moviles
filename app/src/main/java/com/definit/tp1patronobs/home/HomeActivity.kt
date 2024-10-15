@@ -18,11 +18,13 @@ import com.definit.tp1patronobs.databinding.ActivityHomeBinding
 import com.definit.tp1patronobs.home.fragments.HomeFragment
 import com.definit.tp1patronobs.main.MainActivity
 import com.definit.tp1patronobs.register.RegisterActivity
+import com.definit.tp1patronobs.repository.UserRepository
 import com.google.android.material.navigation.NavigationView
 
 class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var binding: ActivityHomeBinding
     private lateinit var drawerLayout: DrawerLayout
+
     // Instancia del ViewModel compartido
     private val sharedViewModel: SharedViewModel by viewModels()
 
@@ -86,7 +88,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         when(item.itemId) {
             R.id.nav_home -> {
                 replaceFragment(HomeFragment())
-                //Toast.makeText(this, "Home", Toast.LENGTH_SHORT).show()
+
             }
             R.id.nav_search -> {
                 //replaceFragment(SearchFragment())
@@ -97,7 +99,8 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show()
             }
             R.id.nav_logout -> {
-                goToMainActivity()
+
+                logout()
             }
         }
         drawerLayout.closeDrawer(GravityCompat.START)
@@ -110,14 +113,18 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         transaction.commit()
     }
 
+    private fun logout() {
+        val preferences = getSharedPreferences(RegisterActivity.CREDENTIALS, MODE_PRIVATE)
+        val gson = com.google.gson.Gson()
+        val userRepository = UserRepository(preferences, gson)
+
+        // Borrar usuario actual de SharedPreferences
+        userRepository.logoutUser()
+        Toast.makeText(this, getString(R.string.logout_success), Toast.LENGTH_SHORT).show()
+        goToMainActivity()
+    }
+
     private fun goToMainActivity() {
-        // Borrar el actualUser de SharedPreferences
-        val editor = getSharedPreferences(RegisterActivity.CREDENTIALS, MODE_PRIVATE).edit()
-        editor.remove("actualUser")
-        editor.apply() // Aplicar los cambios
-
-        // Redirigir a MainActivity
-
         val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish() // Finalizar HomeActivity para evitar que el usuario regrese
