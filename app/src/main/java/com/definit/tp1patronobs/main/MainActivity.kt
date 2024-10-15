@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import com.definit.tp1patronobs.R
 import com.definit.tp1patronobs.models.User
 import com.definit.tp1patronobs.databinding.ActivityMainBinding
+import com.definit.tp1patronobs.repository.UserRepository
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by viewModels()
     private lateinit var preferences: SharedPreferences
     private lateinit var gson: Gson
+    private lateinit var userRepository: UserRepository
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,17 +30,17 @@ class MainActivity : AppCompatActivity() {
 
         preferences = getSharedPreferences( com.definit.tp1patronobs.register.RegisterActivity.CREDENTIALS, MODE_PRIVATE)
         gson = Gson()
+        userRepository = UserRepository(preferences, gson)
 
         //Verificar si hay sesión activa
-        val actualUserJson = preferences.getString("actualUser", null)
-        if (actualUserJson != null) {
-            val actualUser = gson.fromJson(actualUserJson, User::class.java) //Convertir JSON de actualUser en objeto User
-            goToHomeActivity(actualUser) // Redirigir a HomeActivity si hay una sesión activa
+        val currentUser = userRepository.getCurrentUser()
+        if (currentUser != null) {
+            goToHomeActivity(currentUser)
             return
         }
 
         // Cargar la lista de usuarios en el ViewModel
-        val usersList = getUsersList()
+        val usersList = userRepository.getUsersList()
         viewModel.setUsersList(usersList)
 
         // Observadores de cambios en los campos
@@ -65,7 +67,8 @@ class MainActivity : AppCompatActivity() {
             if (viewModel.validateUserCredentials()) {
                 val matchingUser = usersList.find { it.username == binding.etUsername.text.toString() }
                 if (matchingUser != null && binding.checkboxRememberMe.isChecked) {
-                    saveCurrentUser(matchingUser)
+                    //saveCurrentUser(matchingUser)
+                    userRepository.saveCurrentUser(matchingUser)
                 }
                 goToHomeActivity(matchingUser) // Pasar el objeto User a HomeActivity
             } else {
@@ -80,27 +83,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun getUsersList(): List<User> {
-        val usersJson = preferences.getString("users", null)
-        return if (usersJson != null) {
-            val type = object : TypeToken<List<User>>() {}.type
-            gson.fromJson(usersJson, type)
-        } else {
-            emptyList()
-        }
-    }
-
     private fun goToHomeActivity(user: User?) {
         val intent = Intent(this, com.definit.tp1patronobs.home.HomeActivity::class.java)
         intent.putExtra("user", user)
         startActivity(intent)
     }
 
-    // Función para guardar el objeto User en SharedPreferences como JSON
-    private fun saveCurrentUser(user: User) {
-        val edit = preferences.edit() // hacerlo variable global
-        val userJson = gson.toJson(user)
-        edit.putString("actualUser", userJson)
-        edit.apply()
-    }
+
 }
