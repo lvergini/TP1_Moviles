@@ -16,6 +16,9 @@ import com.definit.tp1patronobs.R
 import com.definit.tp1patronobs.models.User
 import com.definit.tp1patronobs.databinding.ActivityHomeBinding
 import com.definit.tp1patronobs.home.fragments.HomeFragment
+import com.definit.tp1patronobs.home.fragments.MyBooksFragment
+import com.definit.tp1patronobs.home.fragments.SearchFragment
+import com.definit.tp1patronobs.home.fragments.SettingsFragment
 import com.definit.tp1patronobs.main.MainActivity
 import com.definit.tp1patronobs.register.RegisterActivity
 import com.definit.tp1patronobs.repository.UserRepository
@@ -90,13 +93,17 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 replaceFragment(HomeFragment())
 
             }
+            R.id.nav_my_books -> {
+                replaceFragment(MyBooksFragment())
+                //Toast.makeText(this,"My books",Toast.LENGTH_SHORT).show()
+            }
             R.id.nav_search -> {
-                //replaceFragment(SearchFragment())
-                Toast.makeText(this, "Search", Toast.LENGTH_SHORT).show()
+                replaceFragment(SearchFragment())
+                //Toast.makeText(this, "Search", Toast.LENGTH_SHORT).show()
             }
             R.id.nav_settings -> {
-                //replaceFragment(SettingsFragment())
-                Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show()
+                replaceFragment(SettingsFragment())
+                //Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show()
             }
             R.id.nav_logout -> {
 

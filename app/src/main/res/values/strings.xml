@@ -33,4 +33,7 @@
     <string name="error_email_invalid">El correo electrónico no es válido.</string>
     <string name="logout_success">Sesión cerrada con éxito</string>
 
+    <string name="My_books_fragment">My books</string>
+    <string name="Search_fragment">Search</string>
+    <string name="Settings_fragment">Settings</string>
 </resources>

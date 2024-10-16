@@ -4,11 +4,15 @@
     <color name="white">#FFFFFFFF</color>
     <color name="blue">#367CF4</color>
     <color name="gray">#666565</color>
-    <!-- Theme colors -->
+
+    <!-- Estos colores los agregó Eze (osea yo) -->
     <color name="space_cadet">#1d3557</color>
     <color name="bean_blue">#457b9d</color>
     <color name="crystal">#a8dadc</color>
     <color name="honeydew">#f1faee</color>
     <color name="desire">#e63946</color>
 
+    <color name="cream">#F6E5CB</color>
+    <color name="pink">#FFD6D6</color>
+    <color name="thistle">#D0B5FF</color>
 </resources>
