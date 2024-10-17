@@ -18,9 +18,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="4dp"
-            android:background="@color/blue"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"/>
+            android:background="@color/space_cadet"
+            />
+
 
         <LinearLayout
             android:id="@+id/fragmentContainer"
