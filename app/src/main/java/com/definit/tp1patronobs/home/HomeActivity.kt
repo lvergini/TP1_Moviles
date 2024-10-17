@@ -11,15 +11,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import com.definit.tp1patronobs.R
-import com.definit.tp1patronobs.models.User
 import com.definit.tp1patronobs.databinding.ActivityHomeBinding
 import com.definit.tp1patronobs.home.fragments.HomeFragment
 import com.definit.tp1patronobs.home.fragments.MyBooksFragment
 import com.definit.tp1patronobs.home.fragments.SearchFragment
 import com.definit.tp1patronobs.home.fragments.SettingsFragment
 import com.definit.tp1patronobs.main.MainActivity
+import com.definit.tp1patronobs.models.User
 import com.definit.tp1patronobs.register.RegisterActivity
 import com.definit.tp1patronobs.repository.UserRepository
 import com.google.android.material.navigation.NavigationView
@@ -33,91 +32,75 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setupObservers()
+        setupToolbarAndDrawer()
+        setupNavigationView()
 
         // Obtener el usuario pasado desde MainActivity
         val user = intent.getSerializableExtra("user") as? User
         user?.let {
-            // Pasar el usuario al ViewModel compartido
             sharedViewModel.setUser(it)
         }
 
-        // Obtener el header de NavigationView
-        //val headerView = binding.navigationView.getHeaderView(0)
-        //val navHeaderUsername = headerView.findViewById<TextView>(R.id.tvNavHeader)
-
-        // Mostrar el nombre de usuario en el TextView
-        /*user?.let {
-            navHeaderUsername.text = it.username
-        }*/
-
-        // Observar los cambios del usuario en el ViewModel y mostrar en el header
-        sharedViewModel.user.observe(this, Observer { user ->
-            val headerView = binding.navigationView.getHeaderView(0)
-            val navHeaderUsername = headerView.findViewById<TextView>(R.id.tvNavHeader)
-            navHeaderUsername.text = user.username
-        })
-
-        val toolbar = binding.toolbar
-        setSupportActionBar(toolbar)
-
-
-        drawerLayout = binding.drawerLayout
-
-
-        //Para manejar interacción (cuándo abrir y cuándo cerrar)
-        val toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.nav_drawer_home_open, R.string.nav_drawer_home_close)
-        drawerLayout.addDrawerListener(toggle)
-
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeButtonEnabled(true)
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_menu)
-        supportActionBar?.title = getString(R.string.txt_app_name)
-
-        //implementación de interfaz para saber dónde hicimos click
-        binding.navigationView.setNavigationItemSelectedListener(this)
-
-        //mostrar fragmento al inicio
+        // Mostrar el fragmento inicial al cargar
         if (savedInstanceState == null) {
             replaceFragment(HomeFragment())
             binding.navigationView.setCheckedItem(R.id.nav_home)
         }
     }
 
+    private fun setupToolbarAndDrawer() {
+        val toolbar = binding.toolbar
+        setSupportActionBar(toolbar)
+
+        drawerLayout = binding.drawerLayout
+
+        val toggle = ActionBarDrawerToggle(
+            this, drawerLayout, toolbar,
+            R.string.nav_drawer_home_open, R.string.nav_drawer_home_close
+        )
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeButtonEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_menu)
+        supportActionBar?.title = getString(R.string.txt_app_name)
+    }
+
+    private fun setupNavigationView() {
+        binding.navigationView.setNavigationItemSelectedListener(this)
+    }
+
+    private fun setupObservers() {
+        // Observar los cambios del usuario en el ViewModel y mostrar en el header
+        sharedViewModel.user.observe(this) { user ->
+            val headerView = binding.navigationView.getHeaderView(0)
+            val navHeaderUsername = headerView.findViewById<TextView>(R.id.tvNavHeader)
+            navHeaderUsername.text = user.username
+        }
+    }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when(item.itemId) {
-            R.id.nav_home -> {
-                replaceFragment(HomeFragment())
-
-            }
-            R.id.nav_my_books -> {
-                replaceFragment(MyBooksFragment())
-                //Toast.makeText(this,"My books",Toast.LENGTH_SHORT).show()
-            }
-            R.id.nav_search -> {
-                replaceFragment(SearchFragment())
-                //Toast.makeText(this, "Search", Toast.LENGTH_SHORT).show()
-            }
-            R.id.nav_settings -> {
-                replaceFragment(SettingsFragment())
-                //Toast.makeText(this, "Settings", Toast.LENGTH_SHORT).show()
-            }
-            R.id.nav_logout -> {
-
-                logout()
-            }
+        when (item.itemId) {
+            R.id.nav_home -> replaceFragment(HomeFragment())
+            R.id.nav_my_books -> replaceFragment(MyBooksFragment())
+            R.id.nav_search -> replaceFragment(SearchFragment())
+            R.id.nav_settings -> replaceFragment(SettingsFragment())
+            R.id.nav_logout -> logout()
         }
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
 
     private fun replaceFragment(fragment: Fragment) {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragmentContainer, fragment)
-        transaction.commit()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, fragment)
+            .commit()
     }
 
     private fun logout() {
@@ -138,12 +121,10 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     override fun onBackPressed() {
-
         if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START)
         } else {
             super.onBackPressed()
-
         }
     }
 }

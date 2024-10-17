@@ -2,7 +2,7 @@
 <project version="4">
   <component name="deploymentTargetSelector">
     <selectionStates>
-      <SelectionState runConfigName="TP1Login">
+      <SelectionState runConfigName="TP1">
         <option name="selectionMode" value="DROPDOWN" />
       </SelectionState>
     </selectionStates>
