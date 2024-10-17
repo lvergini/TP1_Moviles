@@ -1,9 +1,14 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.TP1PatronObs" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/space_cadet</item>
+        <item name="colorPrimaryVariant">@color/bean_blue</item>
+        <item name="colorOnPrimary">@color/honeydew</item>
+        <item name="colorSecondary">@color/desire</item>
+        <item name="colorSecondaryVariant">@color/desire_variant</item>
+        <item name="colorOnSecondary">@color/honeydew</item>
+        <item name="colorSurface">@color/crystal</item>
+        <item name="colorOnSurface">@color/space_cadet</item>
+        <item name="colorAccent">@color/bean_blue</item>
     </style>
-
-    <style name="Theme.TP1PatronObs" parent="Base.Theme.TP1PatronObs" />
 </resources>

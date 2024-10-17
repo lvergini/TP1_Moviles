@@ -1,7 +1,16 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.TP1PatronObs" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+                <item name="colorPrimary">@color/bean_blue</item>
+                <item name="colorPrimaryVariant">@color/space_cadet</item>
+                <item name="colorOnPrimary">@color/honeydew</item>
+                <item name="colorSecondary">@color/desire</item>
+                <item name="colorSecondaryVariant">@color/desire_variant</item>
+                <item name="colorOnSecondary">@color/honeydew</item>
+                <item name="colorSurface">@color/space_cadet</item>
+                <item name="colorOnSurface">@color/crystal</item>
+                <item name="colorAccent">@color/bean_blue</item>
+                <item name="android:windowBackground">@color/space_cadet</item>
+                <item name="android:navigationBarColor">@color/space_cadet</item>
     </style>
 </resources>
