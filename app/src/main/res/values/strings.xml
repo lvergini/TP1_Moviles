@@ -36,4 +36,6 @@
     <string name="My_books_fragment">My books</string>
     <string name="Search_fragment">Search</string>
     <string name="Settings_fragment">Settings</string>
+    <string name="use_os_theme">Usar tema del sistema</string>
+    <string name="dark_theme">Tema Oscuro</string>
 </resources>
