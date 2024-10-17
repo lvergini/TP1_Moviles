@@ -3,8 +3,6 @@
     <style name="Base.Theme.TP1PatronObs" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Color primario de la app, usado para la barra de app, botones y otros elementos destacados. -->
         <item name="colorPrimary">@color/space_cadet</item>
-        <!-- Color del texto primario, usado generalmente para el texto en la barra de app. -->
-        <item name="android:textColorPrimary">@color/honeydew</item>
         <!-- Variante del color primario, usada para la barra de estado y superficies elevadas. -->
         <item name="colorPrimaryVariant">@color/bean_blue</item>
         <!-- Color del texto que aparece sobre el color primario (e.g., texto en botones primarios). -->
@@ -15,9 +13,5 @@
         <item name="colorSecondaryVariant">@color/desire_variant</item>
         <!-- Color del texto que aparece sobre el color secundario (e.g., texto en botones secundarios). -->
         <item name="colorOnSecondary">@color/honeydew</item>
-        <!-- Color de las superficies, como cards y fondos de diálogos. -->
-        <item name="colorSurface">@color/crystal</item>
-        <!-- Color del texto que aparece sobre las superficies (e.g., texto en cards). -->
-        <item name="colorOnSurface">@color/space_cadet</item>
     </style>
 </resources>

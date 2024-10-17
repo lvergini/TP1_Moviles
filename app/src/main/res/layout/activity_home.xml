@@ -19,8 +19,8 @@
             android:layout_height="wrap_content"
             android:elevation="4dp"
             android:background="@color/space_cadet"
+            app:titleTextColor="@color/honeydew"
             />
-
 
         <LinearLayout
             android:id="@+id/fragmentContainer"

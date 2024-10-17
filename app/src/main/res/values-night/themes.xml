@@ -15,15 +15,9 @@
         <item name="colorSecondaryVariant">@color/desire_variant</item>
         <!-- Color del texto que aparece sobre el color secundario (e.g., texto en botones secundarios)-->
         <item name="colorOnSecondary">@color/honeydew</item>
-        <!-- Color de las superficies, como cards y fondos de diálogos-->
-        <item name="colorSurface">@color/space_cadet</item>
-        <!-- Color del texto que aparece sobre las superficies (e.g., textoen cards)-->
-        <item name="colorOnSurface">@color/crystal</item>
-        <!-- Color de acento (deprecated en Material 3, pero puede usarse en algunos componentes).-->
-        <item name="colorAccent">@color/bean_blue</item>
         <!-- Color de fondo de la ventana. En modo oscuro, se recomienda usar un color oscuro.-->
-        <item name="android:windowBackground">@color/space_cadet</item>
-        <!-- Color de la barra de navegación. En modo oscuro, se recomienda usar un color oscuro.-->
-        <item name="android:navigationBarColor">@color/space_cadet</item>
+        <item name="android:windowBackground">@color/dark_bkgnd</item>
+        <!-- Color de texto en los campos de entrada (EditText) -->
+        <item name="android:textColor">@color/honeydew</item>
     </style>
 </resources>
