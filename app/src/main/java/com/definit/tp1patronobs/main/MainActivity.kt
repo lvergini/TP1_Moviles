@@ -13,7 +13,6 @@ import com.definit.tp1patronobs.models.User
 import com.definit.tp1patronobs.databinding.ActivityMainBinding
 import com.definit.tp1patronobs.repository.UserRepository
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 
 class MainActivity : AppCompatActivity() {
 
@@ -28,9 +27,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+
         preferences = getSharedPreferences( com.definit.tp1patronobs.register.RegisterActivity.CREDENTIALS, MODE_PRIVATE)
         gson = Gson()
         userRepository = UserRepository(preferences, gson)
+
 
         //Verificar si hay sesión activa
         val currentUser = userRepository.getCurrentUser()

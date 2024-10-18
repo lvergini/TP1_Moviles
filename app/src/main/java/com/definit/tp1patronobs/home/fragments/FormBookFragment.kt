@@ -40,6 +40,14 @@ class FormBookFragment : Fragment() {
             findNavController().navigate(R.id.action_formBookFragment_to_leidosFragment)
 
         }
+
+        binding.btnCancel.setOnClickListener {
+            requireActivity().supportFragmentManager.beginTransaction()
+                .replace(R.id.fragmentContainer, MyBooksFragment())
+                .addToBackStack(null)
+                .commit()
+        }
+
         return binding.root
     }
 }

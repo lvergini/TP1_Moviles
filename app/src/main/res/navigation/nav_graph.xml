@@ -46,5 +46,8 @@
         <action
             android:id="@+id/action_formBookFragment_to_leidosFragment"
             app:destination="@id/leidosFragment" />
+        <action
+            android:id="@+id/action_formBookFragment_to_myBooksFragment"
+            app:destination="@id/myBooksFragment" />
     </fragment>
 </navigation>
