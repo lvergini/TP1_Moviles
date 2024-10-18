@@ -67,7 +67,6 @@ class MainActivity : AppCompatActivity() {
             if (viewModel.validateUserCredentials()) {
                 val matchingUser = usersList.find { it.username == binding.etUsername.text.toString() }
                 if (matchingUser != null && binding.checkboxRememberMe.isChecked) {
-                    //saveCurrentUser(matchingUser)
                     userRepository.saveCurrentUser(matchingUser)
                 }
                 goToHomeActivity(matchingUser) // Pasar el objeto User a HomeActivity

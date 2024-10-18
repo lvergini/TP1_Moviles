@@ -140,7 +140,6 @@ class RegisterActivity : AppCompatActivity() {
             }
         }
 
-
         binding.btnSignUp.setOnClickListener {
             saveUserData()
             goToMainActivity()
@@ -169,16 +168,6 @@ class RegisterActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    /*private fun getUsersList(): List<User> {
-        val usersJson = preferences.getString("users", null)
-        return if (usersJson != null) {
-            val type = object : TypeToken<List<User>>() {}.type
-            gson.fromJson(usersJson, type)
-        } else {
-            emptyList()
-        }
-
-    }*/
 
     companion object {
         const val CREDENTIALS = "Credenciales"
