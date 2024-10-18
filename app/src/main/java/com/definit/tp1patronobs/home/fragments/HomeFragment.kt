@@ -38,6 +38,7 @@ class HomeFragment : Fragment() {
 
         sharedViewModel.user.observe(viewLifecycleOwner) { user ->
             binding.tvWelcomeMessage.text = getString(R.string.welcome_msg, user.username)
+
         }
 
         // obtener libros de muestra para el usuario actual

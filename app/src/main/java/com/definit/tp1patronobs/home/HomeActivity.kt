@@ -15,6 +15,7 @@ import com.definit.tp1patronobs.R
 import com.definit.tp1patronobs.databinding.ActivityHomeBinding
 import com.definit.tp1patronobs.home.fragments.HomeFragment
 import com.definit.tp1patronobs.home.fragments.MyBooksFragment
+import com.definit.tp1patronobs.home.fragments.ProfileFragment
 import com.definit.tp1patronobs.home.fragments.SearchFragment
 import com.definit.tp1patronobs.home.fragments.SettingsFragment
 import com.definit.tp1patronobs.main.MainActivity
@@ -91,6 +92,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_my_books -> replaceFragment(MyBooksFragment())
             R.id.nav_search -> replaceFragment(SearchFragment())
             R.id.nav_settings -> replaceFragment(SettingsFragment())
+            R.id.nav_profile -> replaceFragment((ProfileFragment()))
             R.id.nav_logout -> logout()
         }
         drawerLayout.closeDrawer(GravityCompat.START)

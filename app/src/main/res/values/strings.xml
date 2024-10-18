@@ -64,6 +64,13 @@
     <string name="books_read">Libros leídos: %1$d</string>
     <string name="books_reading">Libros en progreso: %1$d</string>
     <string name="sucess_sign_up">Usuario registrado con éxito</string>
+    <string name="txt_profile">Perfil</string>
+
+    <string name="profile_username">Nombre de usuario: %1$s</string>
+    <string name="profile_email">Correo electrónico: %1$s</string>
+    <string name="profile_gender">Género: %1$s</string>
+    <string name="profile_additional_info">Información adicional</string>
+    <string name="profile_additional_info_example">Detalles del usuario a implementar a futuro\nPor ejemplo, libros favoritos, etc.</string>
 
 
 </resources>
