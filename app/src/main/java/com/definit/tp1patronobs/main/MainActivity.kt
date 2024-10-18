@@ -85,7 +85,10 @@ class MainActivity : AppCompatActivity() {
     private fun goToHomeActivity(user: User?) {
         val intent = Intent(this, com.definit.tp1patronobs.home.HomeActivity::class.java)
         intent.putExtra("user", user)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK // eliminar MainActivity del historial para que no se pueda volver atrás
+
         startActivity(intent)
+        finish()
     }
 
 
