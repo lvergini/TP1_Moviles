@@ -35,7 +35,8 @@ class HomeFragment : Fragment() {
         //observar los cambios del usuario en el ViewModel
 
         sharedViewModel.user.observe(viewLifecycleOwner) { user ->
-            binding.tvWelcomeMessage.text = getString(R.string.welcome_msg) + user.username
+            binding.tvWelcomeMessage.text = getString(R.string.welcome_msg, user.username)
+
         }
     }
 
