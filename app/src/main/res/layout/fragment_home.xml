@@ -14,7 +14,7 @@
         android:id="@+id/tvWelcomeMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="¡Bienvenido/a, [nombre]!"
+
         android:textSize="24sp"
         android:textStyle="bold"
         android:layout_marginTop="32dp"
@@ -52,7 +52,7 @@
                 android:id="@+id/tvBooksRead"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Libros leídos: X"
+
                 android:textSize="16sp"
                 android:textStyle="bold"/>
         </LinearLayout>
@@ -86,7 +86,7 @@
                 android:id="@+id/tvBooksReading"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Libros en progreso: X"
+
                 android:textSize="16sp"
                 android:textStyle="bold"/>
         </LinearLayout>
@@ -120,7 +120,7 @@
                 android:id="@+id/tvBooksPending"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Libros pendientes: X"
+
                 android:textSize="16sp"
                 android:textStyle="bold"/>
         </LinearLayout>

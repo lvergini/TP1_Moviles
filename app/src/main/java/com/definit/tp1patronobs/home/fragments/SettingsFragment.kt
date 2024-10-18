@@ -41,6 +41,7 @@ class SettingsFragment : Fragment() {
             // Cambiar el tema solo si hay una diferencia entre el estado del switch y el estado almacenado
             if (sharedViewModel.isDarkMode.value != isChecked) {
                 sharedViewModel.setDarkMode(isChecked)
+                //activity?.recreate()
             }
         }
 
