@@ -1,20 +1,20 @@
 <resources>
-    <string name="app_name">TP1PatronObs</string>
-    <string name="hint_username">Username</string>
-    <string name="btn_sign_in_text">Login</string>
+    <string name="app_name">ReadIt</string>
+    <string name="hint_username">Nombre de usuario</string>
+    <string name="btn_sign_in_text">Iniciar sesión</string>
     <string name="remember_me_text">Mantener sesión iniciada</string>
-    <string name="btn_sign_up_text">Sign Up</string>
+    <string name="btn_sign_up_text">Registrarse</string>
     <string name="hint_email">Email</string>
-    <string name="hint_password">Password</string>
-    <string name="hint_confirm_password">Confirm Password</string>
-    <string name="btn_cancel_text">Cancel</string>
-    <string name="txt_inicio">Inicio</string>
-    <string name="txt_mis_libros">Mis libros</string>
+    <string name="hint_password">Contraseña</string>
+    <string name="hint_confirm_password">Confirmar Contraseña</string>
+    <string name="btn_cancel_text">Cancelar</string>
+    <string name="txt_home">Inicio</string>
+    <string name="txt_my_books">Mis libros</string>
     <string name="txt_settings">Configuración</string>
     <string name="nav_drawer_home_open">Open</string>
     <string name="nav_drawer_home_close">Close</string>
-    <string name="txt_busqueda">Search</string>
-    <string name="txt_sign_out">Sign out</string>
+    <string name="txt_busqueda">Buscar</string>
+    <string name="txt_sign_out">Cerrar Sesión</string>
 
     <string name="My_books_fragment">My books</string>
     <string name="Search_fragment">Search</string>
@@ -37,7 +37,10 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
-    <string name="My_books_fragment">My books</string>
-    <string name="Search_fragment">Search</string>
-    <string name="Settings_fragment">Settings</string>
+    <string name="My_books_fragment">Mis libros</string>
+    <string name="Search_fragment">Buscar</string>
+    <string name="Settings_fragment">Configuración</string>
+    <string name="use_os_theme">Usar tema del sistema</string>
+    <string name="dark_theme">Tema Oscuro</string>
+    <string name="welcome_msg">"Bienvenido, "</string>
 </resources>

@@ -1,9 +1,17 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.TP1PatronObs" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Color primario de la app, usado para la barra de app, botones y otros elementos destacados. -->
+        <item name="colorPrimary">@color/space_cadet</item>
+        <!-- Variante del color primario, usada para la barra de estado y superficies elevadas. -->
+        <item name="colorPrimaryVariant">@color/bean_blue</item>
+        <!-- Color del texto que aparece sobre el color primario (e.g., texto en botones primarios). -->
+        <item name="colorOnPrimary">@color/honeydew</item>
+        <!-- Colorsecundario de la app, usado para elementos menos prominentes, como botones flotantes. -->
+        <item name="colorSecondary">@color/desire</item>
+        <!-- Variante del color secundario, usada para superficies elevadas con color secundario. -->
+        <item name="colorSecondaryVariant">@color/desire_variant</item>
+        <!-- Color del texto que aparece sobre el color secundario (e.g., texto en botones secundarios). -->
+        <item name="colorOnSecondary">@color/honeydew</item>
     </style>
-
-    <style name="Theme.TP1PatronObs" parent="Base.Theme.TP1PatronObs" />
 </resources>
