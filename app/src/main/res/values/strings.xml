@@ -8,8 +8,8 @@
     <string name="hint_password">Contraseña</string>
     <string name="hint_confirm_password">Confirmar Contraseña</string>
     <string name="btn_cancel_text">Cancelar</string>
-    <string name="txt_inicio">Inicio</string>
-    <string name="txt_mis_libros">Mis libros</string>
+    <string name="txt_home">Inicio</string>
+    <string name="txt_my_books">Mis libros</string>
     <string name="txt_settings">Configuración</string>
     <string name="nav_drawer_home_open">Open</string>
     <string name="nav_drawer_home_close">Close</string>
