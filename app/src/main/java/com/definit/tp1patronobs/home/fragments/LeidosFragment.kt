@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.definit.tp1patronobs.databinding.FragmentLeidosBinding
 import com.definit.tp1patronobs.models.Book
 import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
 
 class LeidosFragment : Fragment() {
     private lateinit var binding: FragmentLeidosBinding
@@ -29,7 +28,13 @@ class LeidosFragment : Fragment() {
         binding.rvBooks.adapter=bookAdapter
 
         //add books to the list
-        binding.ibleidos
+        arguments?.getParcelable<Book>("book")?.let{book ->
+            bookList.add(book)
+            bookAdapter.notifyItemInserted(bookList.size-1)
+
+            val jsonBooks=gson.toJson(bookList)
+            println("Lista de libros en formato Json: $jsonBooks")
+        }
 
         return binding.root
     }
