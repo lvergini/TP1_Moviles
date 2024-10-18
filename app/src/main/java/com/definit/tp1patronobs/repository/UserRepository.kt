@@ -11,12 +11,16 @@ class UserRepository(private val preferences: SharedPreferences, private val gso
     fun getUsersList(): List<User> {
         val usersJson = preferences.getString("users", null)
         return if (usersJson != null) {
-            val type = object : TypeToken<List<User>>() {}.type
-            gson.fromJson(usersJson, type)
+            val usersArray = gson.fromJson(usersJson, Array<User>::class.java)
+            usersArray.toList()
+
+            //val type = object : TypeToken<List<User>>() {}.type
+            //gson.fromJson(usersJson, type)
         } else {
             emptyList()
         }
     }
+
 
     // Guardar lista de usuarios en Shared Preferences
     fun saveUsersList(usersList: List<User>) {
