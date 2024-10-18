@@ -38,8 +38,26 @@ class RegisterActivity : AppCompatActivity() {
 
         val usersList = getUsersList() // Obtener la lista de usuarios desde SharedPreferences
 
-        // Configuración del Spinner para el género
-        val adapter = ArrayAdapter(this, R.layout.spinner_item, arrayGenders)
+        //Configuración del MaterialAutocompleteTextView
+        val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, arrayGenders)
+        val genderAutocompleteView = binding.actvGender
+        genderAutocompleteView.setAdapter(adapter)
+
+        // Forzar la apertura de la lista desplegable al hacer click en el campo, independientemente del foco
+        genderAutocompleteView.setOnClickListener {
+            genderAutocompleteView.showDropDown()
+        }
+
+        // Manejar la selección de elementos usando setOnItemClickListener
+        genderAutocompleteView.setOnItemClickListener { parent, view, position, id ->
+            genderSelected = arrayGenders[position]
+            if (genderSelected == Genders.UNKNOWN) {
+                genderSelected = null
+            }
+        }
+
+        // VERSIÓN ANTERIOR CON SPINNER Configuración del Spinner para el género
+        /*val adapter = ArrayAdapter(this, R.layout.spinner_item, arrayGenders)
         binding.spinnerGender.adapter = adapter
 
         binding.spinnerGender.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -53,7 +71,7 @@ class RegisterActivity : AppCompatActivity() {
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 genderSelected = null
             }
-        }
+        }*/
 
 
         // Añadir TextWatcher a los campos para validar

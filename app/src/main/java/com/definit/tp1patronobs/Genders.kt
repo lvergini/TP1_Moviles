@@ -1,7 +1,7 @@
 package com.definit.tp1patronobs
 
 enum class Genders(val gender: String) {
-    UNKNOWN("Select Gender"),
+    UNKNOWN(""),
     MASCULINO("Masculino"),
     FEMENINO("Femenino"),
     OTRO("Otro");
