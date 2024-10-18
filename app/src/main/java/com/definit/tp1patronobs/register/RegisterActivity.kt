@@ -15,6 +15,7 @@ import com.definit.tp1patronobs.models.User  // Importar la clase User
 import com.definit.tp1patronobs.Genders
 import com.definit.tp1patronobs.R
 import com.definit.tp1patronobs.databinding.ActivityRegisterBinding
+import com.definit.tp1patronobs.repository.UserRepository
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 
@@ -23,6 +24,7 @@ class RegisterActivity : AppCompatActivity() {
     private val viewModel: RegisterViewModel by viewModels()
     private lateinit var preferences: SharedPreferences
     private lateinit var gson: Gson
+    private lateinit var userRepository: UserRepository
 
     val arrayGenders: Array<Genders> = Genders.values()
     var genderSelected: Genders? = null
@@ -35,8 +37,9 @@ class RegisterActivity : AppCompatActivity() {
         // Inicializar SharedPreferences y GSON
         preferences = getSharedPreferences(CREDENTIALS, MODE_PRIVATE)
         gson = Gson()
+        userRepository = UserRepository(preferences, gson)
 
-        val usersList = getUsersList() // Obtener la lista de usuarios desde SharedPreferences
+        val usersList = userRepository.getUsersList() // Obtener la lista de usuarios desde SharedPreferences
 
         //Configuración del MaterialAutocompleteTextView
         val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, arrayGenders)
@@ -140,6 +143,7 @@ class RegisterActivity : AppCompatActivity() {
 
         binding.btnSignUp.setOnClickListener {
             saveUserData()
+            goToMainActivity()
         }
         binding.btnCancel.setOnClickListener {
             goToMainActivity()
@@ -154,18 +158,10 @@ class RegisterActivity : AppCompatActivity() {
 
         val newUser = User(username, email, password, gender) //gender
 
-        // Obtener la lista de usuarios y agregar el nuevo usuario
-        val usersList = getUsersList().toMutableList()
-        usersList.add(newUser)
+        userRepository.addUser(newUser)
 
-        // Guardar la lista actualizada en SharedPreferences
-        val edit = preferences.edit()
-        val usersJson = gson.toJson(usersList)
-        edit.putString("users", usersJson)
-        edit.apply()
+        Toast.makeText(this, getString(R.string.sucess_sign_up), Toast.LENGTH_SHORT).show()
 
-        Toast.makeText(this, "Usuario registrado con éxito", Toast.LENGTH_SHORT).show()
-        goToMainActivity()
     }
 
     private fun goToMainActivity() {
@@ -173,7 +169,7 @@ class RegisterActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    private fun getUsersList(): List<User> {
+    /*private fun getUsersList(): List<User> {
         val usersJson = preferences.getString("users", null)
         return if (usersJson != null) {
             val type = object : TypeToken<List<User>>() {}.type
@@ -182,7 +178,7 @@ class RegisterActivity : AppCompatActivity() {
             emptyList()
         }
 
-    }
+    }*/
 
     companion object {
         const val CREDENTIALS = "Credenciales"

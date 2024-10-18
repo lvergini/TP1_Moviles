@@ -63,6 +63,7 @@
     <string name="books_pending">Libros pendientes: %1$d</string>
     <string name="books_read">Libros leídos: %1$d</string>
     <string name="books_reading">Libros en progreso: %1$d</string>
+    <string name="sucess_sign_up">Usuario registrado con éxito</string>
 
 
 </resources>
