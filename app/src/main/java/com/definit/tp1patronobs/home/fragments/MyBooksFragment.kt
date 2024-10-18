@@ -16,7 +16,34 @@ class MyBooksFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding= FragmentMyBooksBinding.inflate(inflater,container,false)
+
+        binding.ibleidos.setOnClickListener{
+            replaceFragment(FormBookFragment())
+        }
+        binding.tvleidos.setOnClickListener{
+            replaceFragment(LeidosFragment())
+        }
+
+        binding.ibenprogreso.setOnClickListener{
+            replaceFragment(FormBookFragment())
+        }
+        binding.tvenprogreso.setOnClickListener {
+            replaceFragment(LeyendoFragment())
+        }
+
+        binding.ibpendientes.setOnClickListener{
+            replaceFragment(FormBookFragment())
+        }
+        binding.tvpendientes.setOnClickListener {
+            replaceFragment(PendientesFragment())
+        }
+
         return binding.root
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        requireActivity().supportFragmentManager.beginTransaction().replace(R.id.fragmentContainer,fragment).addToBackStack(null).commit()
+
     }
 
 }

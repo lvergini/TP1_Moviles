@@ -16,9 +16,13 @@
     <string name="txt_busqueda">Buscar</string>
     <string name="txt_sign_out">Cerrar Sesión</string>
 
-    <string name="My_books_fragment">My books</string>
-    <string name="Search_fragment">Search</string>
-    <string name="Settings_fragment">Settings</string>
+    <string name="new_book">Ingrese un nuevo libro</string>
+    <string name="id_isbn">ID (ISBN)</string>
+    <string name="Book_Title">Titulo del libro</string>
+    <string name="Book_Writer">Autor</string>
+    <string name="Gender">Genero</string>
+    <string name="cover_url">CoverUrl</string>
+
 
     <string name="added_status">Added</string>
     <string name="book_cover">Book Cover</string>
@@ -34,8 +38,11 @@
     <string name="error_username_taken">El nombre de usuario ya está registrado.</string>
     <string name="error_username_blank">Campo obligatorio.</string>
     <string name="error_email_invalid">El correo electrónico no es válido.</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="logout_success">Sesión cerrada con éxito </string>
+
+    <string name="well_read">Leidos</string>
+    <string name="reading">Leyendo</string>
+    <string name="will_read">Pendientes</string>
 
     <string name="My_books_fragment">Mis libros</string>
     <string name="Search_fragment">Buscar</string>
@@ -43,4 +50,11 @@
     <string name="use_os_theme">Usar tema del sistema</string>
     <string name="dark_theme">Tema Oscuro</string>
     <string name="welcome_msg">"Bienvenido, "</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Books_Read">Estos son los libros que leiste</string>
+    <string name="BookGender">Genero</string>
+    <string name="Books_reading">Estos son los libros que estas leyendo</string>
+    <string name="Books_Will_Read">Estos son los libros que tengo pendiente</string>
+    <string name="Save_Form">Guardar</string>
 </resources>

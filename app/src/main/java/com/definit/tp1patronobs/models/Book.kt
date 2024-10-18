@@ -5,5 +5,5 @@ data class Book(
     val title: String,
     val author: String,
     val genre: String,
-    val coverUrl: Int?
+    val coverUrl: String
 )
