@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/myBooksFragment">
+
+    <fragment
+        android:id="@+id/myBooksFragment"
+        android:name="com.definit.tp1patronobs.home.fragments.MyBooksFragment"
+        android:label="fragment_my_books"
+        tools:layout="@layout/fragment_my_books" >
+        <action
+            android:id="@+id/action_myBooksFragment_to_leidosFragment"
+            app:destination="@id/leidosFragment" />
+        <action
+            android:id="@+id/action_myBooksFragment_to_leyendoFragment"
+            app:destination="@id/leyendoFragment" />
+        <action
+            android:id="@+id/action_myBooksFragment_to_pendientesFragment"
+            app:destination="@id/pendientesFragment" />
+        <action
+            android:id="@+id/action_myBooksFragment_to_formBookFragment"
+            app:destination="@id/formBookFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/leidosFragment"
+        android:name="com.definit.tp1patronobs.home.fragments.LeidosFragment"
+        android:label="fragment_leidos"
+        tools:layout="@layout/fragment_leidos" />
+    <fragment
+        android:id="@+id/leyendoFragment"
+        android:name="com.definit.tp1patronobs.home.fragments.LeyendoFragment"
+        android:label="fragment_leyendo"
+        tools:layout="@layout/fragment_leyendo" />
+    <fragment
+        android:id="@+id/pendientesFragment"
+        android:name="com.definit.tp1patronobs.home.fragments.PendientesFragment"
+        android:label="fragment_pendientes"
+        tools:layout="@layout/fragment_pendientes" />
+    <fragment
+        android:id="@+id/formBookFragment"
+        android:name="com.definit.tp1patronobs.home.fragments.FormBookFragment"
+        android:label="fragment_form_book"
+        tools:layout="@layout/fragment_form_book" >
+        <action
+            android:id="@+id/action_formBookFragment_to_leidosFragment"
+            app:destination="@id/leidosFragment" />
+    </fragment>
+</navigation>
