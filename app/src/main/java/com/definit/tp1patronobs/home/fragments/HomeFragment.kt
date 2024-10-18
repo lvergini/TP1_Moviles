@@ -23,12 +23,14 @@ class HomeFragment : Fragment() {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
+        binding.tvBooksRead.text = getString(R.string.books_read, 5)
+        binding.tvBooksReading.text = getString(R.string.books_reading, 6)
+        binding.tvBooksPending.text = getString(R.string.books_pending, 3)
         // Observar los libros del usuario
         val userBooks = sharedViewModel.getUserBooks()
         //binding.tvWelcomeHome.text =
         return binding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -36,8 +38,23 @@ class HomeFragment : Fragment() {
 
         sharedViewModel.user.observe(viewLifecycleOwner) { user ->
             binding.tvWelcomeMessage.text = getString(R.string.welcome_msg, user.username)
-
         }
+
+        // obtener libros de muestra para el usuario actual
+        //sharedViewModel.getSampleUserBooks()
+
+        /*// Observar los libros del usuario para actualizar la interfaz
+        sharedViewModel.userBooks.observe(viewLifecycleOwner) { books ->
+            //val readBooksCount = books.count { it.status == ReadingStatus.READ }
+            //val readingBooksCount = books.count { it.status == ReadingStatus.READING }
+            //val pendingBooksCount = books.count { it.status == ReadingStatus.PENDING }
+
+            // Actualizar los textos de las tarjetas con las cantidades correspondientes
+            binding.tvBooksRead.text = getString(R.string.books_read, 5)
+            binding.tvBooksReading.text = getString(R.string.books_reading, 6)
+            binding.tvBooksPending.text = getString(R.string.books_pending, 3)
+        }*/
+
     }
 
 }

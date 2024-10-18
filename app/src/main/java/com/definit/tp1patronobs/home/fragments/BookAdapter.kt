@@ -7,7 +7,14 @@ import com.definit.tp1patronobs.databinding.ItemBookBinding
 import com.definit.tp1patronobs.models.Book
 import com.bumptech.glide.Glide
 
-class BookAdapter (private val books:List<Book>): RecyclerView.Adapter<BookAdapter.BookViewHolder>(){
+class BookAdapter (private val books: MutableList<Book>): RecyclerView.Adapter<BookAdapter.BookViewHolder>(){
+
+    // Método para actualizar la lista de libros
+    fun updateBooks(newBooks: List<Book>) {
+        books.clear()
+        books.addAll(newBooks)
+        notifyDataSetChanged() // Notifica que los datos han cambiado
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {

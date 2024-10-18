@@ -36,43 +36,31 @@ android {
 }
 
 dependencies {
-
     implementation libs.androidx.core.ktx
     implementation libs.androidx.appcompat
     implementation libs.material
     implementation libs.androidx.activity
     implementation libs.androidx.constraintlayout
     implementation libs.firebase.firestore.ktx
-    implementation libs.androidx.navigation.fragment.ktx
     testImplementation libs.junit
     androidTestImplementation libs.androidx.junit
     androidTestImplementation libs.androidx.espresso.core
 
-    implementation("com.google.code.gson:gson:2.11.0")
-    implementation("androidx.fragment:fragment-ktx:1.6.1")
-    implementation("androidx.activity:activity-ktx:1.7.2")
+    // JSON handling library
+    implementation "com.google.code.gson:gson:2.11.0"
+    // Fragment and activity extensions
+    implementation "androidx.fragment:fragment-ktx:1.6.1"
+    implementation "androidx.activity:activity-ktx:1.7.2"
 
+    // Image loading library
     implementation 'com.github.bumptech.glide:glide:4.13.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
 
+    // Navigation dependencies - unified version
     def nav_version = "2.8.1"
-// Jetpack Compose Integration
-    implementation "androidx.navigation:navigation-compose:$nav_version"
-// Views/Fragments Integration
-    implementation "androidx.navigation:navigation-fragment:$nav_version"
-    implementation "androidx.navigation:navigation-ui:$nav_version"
-// Feature module support for Fragments
-    implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
-// Testing Navigation
-    androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
-    // Dentro de 'dependencies'
-    implementation "androidx.navigation:navigation-fragment-ktx:2.7.0"
-    // Última versión disponible
-    implementation "androidx.navigation:navigation-ui-ktx:2.7.0"
-    implementation "androidx.navigation:navigation-compose:2.7.0"
-
-
-
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
+    androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
+    implementation "androidx.navigation:navigation-compose:$nav_version"
 }

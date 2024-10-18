@@ -8,14 +8,14 @@ data class Book(
     val title: String?,
     val author: String?,
     val genre: String?,
-    val coverUrl: String?
+    val coverUrl: Int?
 ):Parcelable{
     constructor(parcel: Parcel) : this(
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
-        parcel.readString()
+        parcel.readInt()
     )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
@@ -23,7 +23,9 @@ data class Book(
         parcel.writeString(title)
         parcel.writeString(author)
         parcel.writeString(genre)
-        parcel.writeString(coverUrl)
+        if (coverUrl != null) {
+            parcel.writeInt(coverUrl)
+        }
     }
 
     override fun describeContents(): Int {

@@ -18,6 +18,10 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
     private val _user = MutableLiveData<User>()
     val user: LiveData<User> get() = _user
     val userBooks = MutableLiveData<List<UserBook>>()
+
+    private val _books = MutableLiveData<MutableList<Book>>(mutableListOf())
+    val books: LiveData<MutableList<Book>> get() = _books
+
     // Initialize SharedPreferences
     private val sharedPreferences: SharedPreferences = application.getSharedPreferences("theme_prefs", Context.MODE_PRIVATE)
     // LiveData para el tema oscuro
@@ -53,6 +57,18 @@ class SharedViewModel(application: Application) : AndroidViewModel(application) 
 
     fun setUser(user: User) {
         _user.value = user
+    }
+
+    // Agregar un libro a la lista
+    fun addBook(book: Book) {
+        val currentList = _books.value ?: mutableListOf()
+        currentList.add(book)
+        _books.value = currentList
+    }
+
+    // Obtener la lista de libros
+    fun getBooks(): List<Book>? {
+        return _books.value
     }
 
     // Obtener libros del usuario
