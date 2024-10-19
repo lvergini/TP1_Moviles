@@ -37,7 +37,7 @@ class FormBookFragment : Fragment() {
             }*/
             sharedViewModel.addBook(book)
             //findNavController().navigate(R.id.action_formBookFragment_to_leidosFragment, bundle)
-            findNavController().navigate(R.id.action_formBookFragment_to_leidosFragment)
+            //findNavController().navigate(R.id.action_formBookFragment_to_leidosFragment)
 
         }
 

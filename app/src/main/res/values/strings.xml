@@ -51,7 +51,6 @@
     <string name="dark_theme">Tema Oscuro</string>
     <string name="welcome_msg">¡Bienvenido/a, %1$s!</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="Books_Read">Estos son los libros que leíste</string>
     <string name="BookGender">Género</string>
